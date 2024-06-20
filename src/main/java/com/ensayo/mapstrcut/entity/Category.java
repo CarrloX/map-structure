@@ -22,5 +22,5 @@ public class Category {
 
     private String name;
 
-    private boolean status;
+    private Boolean status;
 }

@@ -9,14 +9,14 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-06-20T16:49:17-0500",
+    date = "2024-06-20T17:29:19-0500",
     comments = "version: 1.5.5.Final, compiler: Eclipse JDT (IDE) 3.38.0.v20240524-2033, environment: Java 17.0.11 (Eclipse Adoptium)"
 )
 @Component
-public class CategoryMapperImpl implements CategoryMapper {
+public class CategoryMapperImpl extends CategoryMapper {
 
     @Override
-    public GetCategory toGetCategory(Category category) {
+    GetCategory toGetCategory(Category category) {
         if ( category == null ) {
             return null;
         }
@@ -30,21 +30,7 @@ public class CategoryMapperImpl implements CategoryMapper {
     }
 
     @Override
-    public Category toEntity(GetCategory getCategory) {
-        if ( getCategory == null ) {
-            return null;
-        }
-
-        Category.CategoryBuilder category = Category.builder();
-
-        category.id( getCategory.getId() );
-        category.name( getCategory.getName() );
-
-        return category.build();
-    }
-
-    @Override
-    public List<GetCategory> toGetCategoryList(List<Category> categoryList) {
+    List<GetCategory> toGetCategoryList(List<Category> categoryList) {
         if ( categoryList == null ) {
             return null;
         }
@@ -58,7 +44,7 @@ public class CategoryMapperImpl implements CategoryMapper {
     }
 
     @Override
-    public List<Category> toEntitList(List<GetCategory> getCategoryList) {
+    List<Category> toEntityList(List<GetCategory> getCategoryList) {
         if ( getCategoryList == null ) {
             return null;
         }

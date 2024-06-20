@@ -7,16 +7,19 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-06-20T16:33:19-0500",
+    date = "2024-06-20T17:25:56-0500",
     comments = "version: 1.5.5.Final, compiler: Eclipse JDT (IDE) 3.38.0.v20240524-2033, environment: Java 17.0.11 (Eclipse Adoptium)"
 )
 @Component
 public class ProductMapperImpl implements ProductMapper {
 
+    @Autowired
+    private CategoryMapper categoryMapper;
     private final DateTimeFormatter dateTimeFormatter_yyyy_MM_dd_HH_mm_ss_11333195168 = DateTimeFormatter.ofPattern( "yyyy-MM-dd HH:mm:ss" );
 
     @Override
@@ -30,6 +33,7 @@ public class ProductMapperImpl implements ProductMapper {
         if ( product.getCreationDate() != null ) {
             getProduct.creationDate( dateTimeFormatter_yyyy_MM_dd_HH_mm_ss_11333195168.format( product.getCreationDate() ) );
         }
+        getProduct.category( categoryMapper.toGetCategory( product.getCategory() ) );
         if ( product.getId() != null ) {
             getProduct.id( product.getId() );
         }
@@ -49,6 +53,7 @@ public class ProductMapperImpl implements ProductMapper {
         if ( getProduct.getCreationDate() != null ) {
             product.creationDate( LocalDateTime.parse( getProduct.getCreationDate(), dateTimeFormatter_yyyy_MM_dd_HH_mm_ss_11333195168 ) );
         }
+        product.category( categoryMapper.toEntity( getProduct.getCategory() ) );
         product.id( getProduct.getId() );
         product.name( getProduct.getName() );
 

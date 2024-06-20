@@ -11,7 +11,7 @@ import org.mapstruct.Mappings;
 import com.ensayo.mapstrcut.dto.GetProduct;
 import com.ensayo.mapstrcut.entity.Product;
 
-@Mapper(componentModel = MappingConstants.ComponentModel.SPRING,uses = {})
+@Mapper(componentModel = MappingConstants.ComponentModel.SPRING, uses = {CategoryMapper.class})
 public interface ProductMapper {
 
     @Mappings({
