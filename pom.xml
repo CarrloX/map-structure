@@ -36,6 +36,12 @@
 		</dependency>
 
 		<dependency>
+        	<groupId>org.mapstruct</groupId>
+        	<artifactId>mapstruct</artifactId>
+        	<version>1.5.5.Final</version>
+    	</dependency>
+
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
@@ -72,6 +78,24 @@
 					</excludes>
 				</configuration>
 			</plugin>
+
+			<plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.8.1</version>
+            <configuration>
+                <source>17</source> <!-- depending on your project -->
+                <target>17</target> <!-- depending on your project -->
+                <annotationProcessorPaths>
+                    <path>
+                        <groupId>org.mapstruct</groupId>
+                        <artifactId>mapstruct-processor</artifactId>
+                        <version>1.5.5.Final</version>
+                    </path>
+                    <!-- other annotation processors -->
+                </annotationProcessorPaths>
+            </configuration>
+        </plugin>
 		</plugins>
 	</build>
 
