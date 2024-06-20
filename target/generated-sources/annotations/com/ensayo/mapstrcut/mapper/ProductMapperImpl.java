@@ -4,12 +4,14 @@ import com.ensayo.mapstrcut.dto.GetProduct;
 import com.ensayo.mapstrcut.entity.Product;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-06-20T07:20:41-0500",
+    date = "2024-06-20T08:06:02-0500",
     comments = "version: 1.5.5.Final, compiler: Eclipse JDT (IDE) 3.38.0.v20240524-2033, environment: Java 17.0.11 (Eclipse Adoptium)"
 )
 @Component
@@ -51,5 +53,33 @@ public class ProductMapperImpl implements ProductMapper {
         product.setName( getProduct.getName() );
 
         return product;
+    }
+
+    @Override
+    public List<GetProduct> toGetProductList(List<Product> productList) {
+        if ( productList == null ) {
+            return null;
+        }
+
+        List<GetProduct> list = new ArrayList<GetProduct>( productList.size() );
+        for ( Product product : productList ) {
+            list.add( toGetDTO( product ) );
+        }
+
+        return list;
+    }
+
+    @Override
+    public List<Product> toEntityList(List<GetProduct> getProductList) {
+        if ( getProductList == null ) {
+            return null;
+        }
+
+        List<Product> list = new ArrayList<Product>( getProductList.size() );
+        for ( GetProduct getProduct : getProductList ) {
+            list.add( toEntity( getProduct ) );
+        }
+
+        return list;
     }
 }
