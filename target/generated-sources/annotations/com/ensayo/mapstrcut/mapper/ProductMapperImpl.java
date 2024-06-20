@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-06-20T08:06:02-0500",
+    date = "2024-06-20T16:33:19-0500",
     comments = "version: 1.5.5.Final, compiler: Eclipse JDT (IDE) 3.38.0.v20240524-2033, environment: Java 17.0.11 (Eclipse Adoptium)"
 )
 @Component
@@ -25,17 +25,17 @@ public class ProductMapperImpl implements ProductMapper {
             return null;
         }
 
-        GetProduct getProduct = new GetProduct();
+        GetProduct.GetProductBuilder getProduct = GetProduct.builder();
 
         if ( product.getCreationDate() != null ) {
-            getProduct.setCreationDate( dateTimeFormatter_yyyy_MM_dd_HH_mm_ss_11333195168.format( product.getCreationDate() ) );
+            getProduct.creationDate( dateTimeFormatter_yyyy_MM_dd_HH_mm_ss_11333195168.format( product.getCreationDate() ) );
         }
         if ( product.getId() != null ) {
-            getProduct.setId( product.getId() );
+            getProduct.id( product.getId() );
         }
-        getProduct.setName( product.getName() );
+        getProduct.name( product.getName() );
 
-        return getProduct;
+        return getProduct.build();
     }
 
     @Override
@@ -44,15 +44,15 @@ public class ProductMapperImpl implements ProductMapper {
             return null;
         }
 
-        Product product = new Product();
+        Product.ProductBuilder product = Product.builder();
 
         if ( getProduct.getCreationDate() != null ) {
-            product.setCreationDate( LocalDateTime.parse( getProduct.getCreationDate(), dateTimeFormatter_yyyy_MM_dd_HH_mm_ss_11333195168 ) );
+            product.creationDate( LocalDateTime.parse( getProduct.getCreationDate(), dateTimeFormatter_yyyy_MM_dd_HH_mm_ss_11333195168 ) );
         }
-        product.setId( getProduct.getId() );
-        product.setName( getProduct.getName() );
+        product.id( getProduct.getId() );
+        product.name( getProduct.getName() );
 
-        return product;
+        return product.build();
     }
 
     @Override
