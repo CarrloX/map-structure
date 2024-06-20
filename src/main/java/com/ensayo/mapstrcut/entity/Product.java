@@ -41,5 +41,10 @@ public class Product {
         this.creationDate = creationDate;
     }
 
+    @Override
+    public String toString() {
+        return "Product [id=" + id + ", name=" + name + ", creationDate=" + creationDate + "]";
+    }
+
     
 }

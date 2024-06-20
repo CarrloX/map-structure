@@ -30,4 +30,11 @@ public class GetProduct {
         this.creationDate = creationDate;
     }
 
+    @Override
+    public String toString() {
+        return "GetProduct [id=" + id + ", name=" + name + ", creationDate=" + creationDate + "]";
+    }
+
+    
+
 }

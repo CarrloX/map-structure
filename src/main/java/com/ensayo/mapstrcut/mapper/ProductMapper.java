@@ -1,5 +1,6 @@
 package com.ensayo.mapstrcut.mapper;
 
+import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
@@ -16,4 +17,7 @@ public interface ProductMapper {
     })
 
     GetProduct toGetDTO(Product product);
+
+    @InheritInverseConfiguration
+    Product toEntity(GetProduct getProduct);
 }
