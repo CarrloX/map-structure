@@ -1,5 +1,6 @@
 package com.ensayo.mapstrcut.entity;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
@@ -28,6 +29,8 @@ public class Product {
 
     @Column(name = "creation_date")
     private LocalDateTime creationDate;
+
+    private BigDecimal price;
 
     @ManyToOne
     @JoinColumn(name = "category_id")

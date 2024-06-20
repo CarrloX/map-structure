@@ -15,8 +15,7 @@ import com.ensayo.mapstrcut.repository.productRepository;
 @Configuration
 public class initDataBase {
 
-    @Autowired
-    private  ProductMapper productMapper;
+    private ProductMapper productMapper = ProductMapper.INSTANCE;
 
     @Autowired
     private productRepository productRepository;

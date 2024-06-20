@@ -16,4 +16,5 @@ public class GetProduct {
     private String name;
     private String creationDate;
     private GetCategory category;
+    private String price;
 }

@@ -2,39 +2,24 @@ package com.ensayo.mapstrcut.mapper;
 
 import java.util.List;
 
+import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
-import org.mapstruct.MappingConstants;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.mapstruct.factory.Mappers;
 
 import com.ensayo.mapstrcut.dto.GetCategory;
 import com.ensayo.mapstrcut.entity.Category;
-import com.ensayo.mapstrcut.repository.categoryRepository;
 
-@Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public abstract class CategoryMapper {
+@Mapper(componentModel = "spring")
+public interface CategoryMapper {
 
-    @Autowired
-    private categoryRepository categoryRepository;
+    public CategoryMapper INSTANCE = Mappers.getMapper(CategoryMapper.class);
 
-    abstract GetCategory toGetCategory(Category category);
+    GetCategory toGetCategory(Category category);
 
-    Category toEntity(GetCategory getCategory) {
+    @InheritInverseConfiguration
+    Category toEntity(GetCategory getCategory);
 
-        if (getCategory == null)
-            return null;
+    List<GetCategory> toGetCategoryList(List<Category> categoryList);
 
-        Category category = categoryRepository.findById(getCategory.getId())
-                .orElse(null);
-
-        if (category == null) return null;
-
-        category.setId(getCategory.getId());
-        category.setName(getCategory.getName());
-
-        return category;
-    };
-
-    abstract List<GetCategory> toGetCategoryList(List<Category> categoryList);
-
-    abstract List<Category> toEntityList(List<GetCategory> getCategoryList);
+    List<Category> toEntityList(List<GetCategory> getCategoryList);
 }
